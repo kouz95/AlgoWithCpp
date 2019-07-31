@@ -1,8 +1,14 @@
 #include <iostream>
-#include <cstring>
+#include <string>
 using namespace std;
 int main()
 {
-    
-    return 0;
+    string input;
+    cin >> input;
+    cout << input[0];
+    for (int i = 1 ; i < input.size() -1 ; i++)
+    {
+        if (input[i]=='-')
+            cout<< input[i+1];
+    }
 }
