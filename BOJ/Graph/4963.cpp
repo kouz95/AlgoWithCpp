@@ -16,9 +16,9 @@ void init(){
         }
 }
 void fillmap(int w, int h){
-    for (int i = 1 ; i <= width ; i++)
-        for (int j = 1 ; j <= height ; j++){
-            cin >> map[i][j];
+    for (int i = 1 ; i <= height ; i++)
+        for (int j = 1 ; j <= width ; j++){
+            cin >> map[j][i];
         }
 }
 void grouping(int x, int y){
@@ -68,4 +68,6 @@ int main(){
     }
     
 }
+
+
 
