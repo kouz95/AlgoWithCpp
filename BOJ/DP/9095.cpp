@@ -3,6 +3,7 @@ using namespace std;
 
 int dp[11];
 int n;
+
 void init(){
     dp[0] = 0;
     dp[1] = 1;
