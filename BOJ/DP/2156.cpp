@@ -17,9 +17,15 @@ void func(){
     dp[0] = 0;
     dp[1] = amt[1];
     dp[2] = dp[1] + amt[2];
-    for (int i = 3 ; i<= n; i ++)
-        dp[i] = max(max(dp[i-2] + amt[i],dp[i-3] + amt[i-1] + amt[i]),dp[i-1]);
-    cout << dp[n]<<endl;
+    dp[3] = max(amt[1]+amt[3], amt[2]+amt[3]);
+    for (int i = 4 ; i<= n; i ++)
+        dp[i] = max(max(dp[i-2] + amt[i],dp[i-3] + amt[i-1] + amt[i]),dp[i-4]+amt[i-1]+amt[i]);
+    int max = 0;
+    for (int i = 1 ; i<= n; i++){
+        if (!max || max < dp[i])
+            max = dp[i];
+    }
+    cout << max << endl;
 }
 
 void input(){
