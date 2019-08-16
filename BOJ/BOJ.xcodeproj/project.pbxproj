@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1731C0302305A21A002C5145 /* 1475.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1731C02F2305A21A002C5145 /* 1475.cpp */; };
+		1731C0342306ACE2002C5145 /* 1085.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1731C0332306ACE2002C5145 /* 1085.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +35,8 @@
 		171180D422F093F300E614F1 /* 2902.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = 2902.cpp; sourceTree = "<group>"; };
 		1731C02D23059C39002C5145 /* 1978.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = 1978.cpp; sourceTree = "<group>"; };
 		1731C02F2305A21A002C5145 /* 1475.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = 1475.cpp; sourceTree = "<group>"; };
+		1731C0312306A793002C5145 /* 2163.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = 2163.cpp; sourceTree = "<group>"; };
+		1731C0332306ACE2002C5145 /* 1085.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = 1085.cpp; sourceTree = "<group>"; };
 		1745CA2422FEBE350044A2C5 /* 1003.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = 1003.cpp; sourceTree = "<group>"; };
 		1745CA2622FEC71E0044A2C5 /* 1912.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = 1912.cpp; sourceTree = "<group>"; };
 		175FFE7A22F99BE800EE45B5 /* 2577.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = 2577.cpp; sourceTree = "<group>"; };
@@ -97,6 +99,8 @@
 				17C1362223041E3300CD90A0 /* 1110.cpp */,
 				1731C02D23059C39002C5145 /* 1978.cpp */,
 				1731C02F2305A21A002C5145 /* 1475.cpp */,
+				1731C0312306A793002C5145 /* 2163.cpp */,
+				1731C0332306ACE2002C5145 /* 1085.cpp */,
 			);
 			path = Math;
 			sourceTree = "<group>";
@@ -182,7 +186,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1731C0302305A21A002C5145 /* 1475.cpp in Sources */,
+				1731C0342306ACE2002C5145 /* 1085.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
