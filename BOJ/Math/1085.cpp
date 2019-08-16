@@ -26,3 +26,4 @@ int main(){
     init();
     func();
 }
+
