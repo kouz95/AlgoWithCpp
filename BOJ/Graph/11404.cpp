@@ -35,20 +35,16 @@ void func(){
     for (int k = 1 ; k <= n ; k++)
         for (int i = 1 ; i <= n ; i++)
             for (int j = 1 ; j <= n ; j++)
-                cost[i][j] = min(cost[i][j],cost[i][k]+cost[k][j]);
+                cost[i][j] = (cost[i][j] < cost[i][k]+cost[k][j]) ? cost[i][j] : cost[i][k] + cost[k][j];
 }
 
+
+
 void init(){
-     cin >> n >> m;
+    cin >> n >> m;
     for (int i = 1; i <= n ; i++)
         for (int j = 1 ; j <= n ; j++)
-            cost[i][j] = INF;
-    
-    
-    for (int i = 1; i <= n ; i++)
-        for(int j = 1 ; i<= n ; j++)
-            if (i == j)
-                cost[i][j] = 0;
+            cost[i][j] = i == j ? 0 : INF;
     
     for (int i = 1 ; i <= m ; i++){
         cin >> start >> _end >> newCost;
@@ -64,4 +60,5 @@ int main(){
     init();
     func();
     res();
+    return 0;
 }
