@@ -27,7 +27,7 @@ void res(){
                 cost[i][j] = 0;
             cout << cost[i][j] << " ";
         }
-        cout << endl;
+        cout << "\n";
     }
 }
 
