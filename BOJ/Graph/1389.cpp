@@ -32,16 +32,12 @@ void res(){
 void func(){
     for (int k = 1; k <= n; k++)
         for (int i = 1; i <= n; i++)
-            for (int j = 1; j <= n; j++)
+            for (int j = 1; j <= n; j++){
                 if (i == j)
                     continue;
-                else if (friends[i][k] && friends[k][j]){
-                    if (friends[i][j] == 0)
-                        friends[i][j] = friends[i][k] + friends[k][j];
-                    else
-                        friends[i][j] = min(friends[i][j], friends[i][k] + friends[k][j]);
-                    
-                }
+                if (friends[i][k] && friends[k][j])
+                    friends[i][j] = friends[i][j] == 0 ? friends[i][k] + friends[k][j] : min(friends[i][j], friends[i][k] + friends[k][j]);
+            }
 }
 
 void init(){
