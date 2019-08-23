@@ -16,12 +16,19 @@ using namespace std;
 int node , edge;
 int map[500][500];
 int u, v, p;
-pair <int,int> route;
-vector<pair<int,int>> vRoute;
+int dist[500];
+bool visit[500] = {false,};
 int sNode, eNode;
 
 void getShortestPath(){
-
+    dist[0] = 0;
+    for (int i = 1 ; i < 500 ; i++)
+        dist[i] = INF;
+    int curNode = 0;
+    for(int i = 1 ; i < node ; i++){
+        dist[i] = dist[curNode] +
+    }d
+    
 }
 
 void init(){
