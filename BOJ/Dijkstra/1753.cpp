@@ -11,53 +11,49 @@
 #define INF 2e9
 using namespace std;
 
-int vertex , edge , startVertex;
- // from , to, cost
-
-
-void func(int vertex, vector <pair<int,int> > * arr){
-    int dist[vertex+1];
-    fill(dist,dist+vertex+1,INF);
-    priority_queue<pair<int,int> > qu; // cost , to
+void func(int vertex, int startVertex, vector<pair<int, int> > * cost,int * dist){
+    priority_queue<pair<int,int> > qu;
+    
     qu.push({0,startVertex});
     dist[startVertex] = 0;
     
-    
     while(!qu.empty()){
-        int val = -qu.top().first;
-        int here = qu.top().second;
-        
+        int currCost = -qu.top().first;
+        int currVertex = qu.top().second;
         qu.pop();
         
-        for (int i = 0 ; i < arr[here].size() ; i++){
-            int next = arr[here][i].first;
-            int nextCost = arr[here][i].second;
+        for(int i = 0 ; i < cost[currVertex].size(); i++){
+            int nextVertex = cost[currVertex][i].first;
+            int nextCost = cost[currVertex][i].second;
             
-            if(dist[next] > dist[here] + nextCost){
-                dist[next] = dist[here] + nextCost;
-                qu.push({-dist[next],next});
-            }
+            dist[nextVertex] = dist[nextVertex] > dist[currVertex] + nextCost ? (qu.push({-dist[nextVertex],nextVertex}), dist[currVertex] + nextCost ) : dist[nextVertex];
+            
         }
+        
     }
-    for (int i = 1 ; i <= vertex ; i++){
-        if (dist[i] !=INF)
-            cout << dist[i] << endl;
-        else cout << "INF" << endl;
+    
+    for (int i = 1 ; i<=vertex; i++){
+        if (dist[i] != INF)
+            cout << dist[i] << "\n";
+        else cout << "INF" << "\n";
+        
     }
 }
 
 void init(){
+    int vertex, edge, startVertex;
+    cin >> vertex >> edge >> startVertex;
     
-    cin >> vertex >> edge;
-    cin >> startVertex;
-    vector<pair<int,int> > arr[vertex+1];
-   
+    vector<pair<int, int> > cost[vertex+1]; // from , to , cost;
+    
     for (int i = 0 ; i < edge ; i++){
-        int from, to, cost;
-        cin >> from >> to >> cost ;
-        arr[from].push_back({to,cost});
+        int from, to , val;
+        cin >> from >> to >> val;
+        cost[from].push_back({to,val});
     }
-    func(vertex, arr);
+    int dist[vertex+1];
+    fill(dist, dist+vertex+1,INF);
+    func(vertex,startVertex,cost,dist);
 }
 
 int main(){
