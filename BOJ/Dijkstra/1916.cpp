@@ -23,7 +23,7 @@ void func(int vertex,vector<pair<int,int> > * cost,int startVertex,int endVertex
         for(int i = 0 ; i < cost[currVertex].size() ; i++){
             int nextVertex = cost[currVertex][i].first;
             int nextCost = cost[currVertex][i].second;
-            dist[nextVertex] = dist[nextVertex] > dist[currVertex] + nextCost ? (qu.push({-dist[currVertex] + nextCost,nextVertex}), dist[currVertex] + nextCost) : dist[nextVertex];
+            dist[nextVertex] = dist[nextVertex] > dist[currVertex] + nextCost ? (qu.push({-(dist[currVertex] + nextCost),nextVertex}), dist[currVertex] + nextCost) : dist[nextVertex];
         }
     }
     cout << dist[endVertex] << "\n";
