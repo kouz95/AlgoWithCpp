@@ -27,7 +27,7 @@ void getShortestPath(){
     int curNode = 0;
     for(int i = 1 ; i < node ; i++){
         dist[i] = dist[curNode] +
-    }d
+    }
     
 }
 
