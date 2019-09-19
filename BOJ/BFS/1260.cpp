@@ -10,27 +10,27 @@
 #include <vector>
 #include <algorithm>
 #include <queue>
-#include <string.h>
+#include <cstring>
 
 using namespace std;
 
 void BFS(int startVertex, vector<int> * edges, int vertex, bool * visit){
     queue<int> qu;
     qu.push(startVertex);
+    cout << qu.front() << " ";
     visit[startVertex] = true;
-    cout << qu.front() << " " ;
-    while (!qu.empty()){
+    while(!qu.empty()){
         int currVertex = qu.front();
         qu.pop();
         for(int i = 0 ; i < edges[currVertex].size(); i++){
             int nextVertex = edges[currVertex][i];
-            if (!visit[nextVertex]){
-                cout << nextVertex << " ";
+            if(!visit[nextVertex]){
                 visit[nextVertex] = true;
+                cout << nextVertex << " ";
                 qu.push(nextVertex);
             }
+            
         }
-        
     }
 }
 
@@ -44,26 +44,35 @@ void DFS(int startVertex, vector<int> * edges, int vertex, bool * visit){
             DFS(nextVertex,edges,vertex,visit);
         }
     }
-    else return;
 }
-    
-    int main(){
-        int vertex, edge, startVertex;
-        cin >> vertex >> edge >> startVertex;
-        vector<int> edges[vertex+1];
-        for(int i = 0 ; i < edge ; i++){
-            int from, to;
-            cin >> from >> to;
-            edges[from].push_back(to);
-            edges[to].push_back(from);
-        }
-        bool visit[vertex+1];
-        memset(visit, 0, sizeof(visit));
-        for(int j = 1; j <= vertex; j++)
-            sort(edges[j].begin(), edges[j].end());
-        
-        DFS(startVertex,edges,vertex,visit);
-        cout << "\n";
-        memset(visit, 0, sizeof(visit));
-        BFS(startVertex,edges,vertex,visit);
+
+int main(){
+    int vertex, edge, startVertex;
+    cin >> vertex >> edge >> startVertex;
+    vector<int> edges[vertex+1];
+    for(int i = 0 ; i < edge ; i++){
+        int from, to;
+        cin >> from >> to;
+        edges[from].push_back(to);
+        edges[to].push_back(from);
     }
+    /*
+     vertex
+     0  1   2   3   4
+     0
+     1  2   3   4
+     2  1   4
+     3  1   4
+     4  1   2   3
+     */
+    
+    
+    bool visit[vertex+1];
+    for(int j = 1; j <= vertex; j++)
+        sort(edges[j].begin(), edges[j].end());
+    memset(visit, false, sizeof(visit));
+    DFS(startVertex,edges,vertex,visit);
+    cout << "\n";
+    memset(visit, false, sizeof(visit));
+    BFS(startVertex,edges,vertex,visit);
+}

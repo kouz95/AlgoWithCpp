@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		17F223C923330DD1004A335B /* 1260.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17F223B723330DD1004A335B /* 1260.cpp */; };
+		1715EAAF23336FE500B49EF2 /* 1065.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1715EAAE23336FE500B49EF2 /* 1065.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,6 +33,7 @@
 		171180D022F0921900E614F1 /* 2455.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = 2455.cpp; sourceTree = "<group>"; };
 		171180D222F0939500E614F1 /* 10998.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = 10998.cpp; sourceTree = "<group>"; };
 		171180D422F093F300E614F1 /* 2902.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = 2902.cpp; sourceTree = "<group>"; };
+		1715EAAE23336FE500B49EF2 /* 1065.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = 1065.cpp; sourceTree = "<group>"; };
 		1731C02D23059C39002C5145 /* 1978.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = 1978.cpp; sourceTree = "<group>"; };
 		1731C02F2305A21A002C5145 /* 1475.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = 1475.cpp; sourceTree = "<group>"; };
 		1731C0312306A793002C5145 /* 2163.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = 2163.cpp; sourceTree = "<group>"; };
@@ -92,6 +93,7 @@
 		171180B622F0902000E614F1 = {
 			isa = PBXGroup;
 			children = (
+				1715EAAD23336FA200B49EF2 /* BruteForce */,
 				17F223B623330DD1004A335B /* BFS */,
 				17F223BB23330DD1004A335B /* Dijkstra */,
 				17F223BF23330DD1004A335B /* GreedyAlgorithm */,
@@ -120,6 +122,14 @@
 				171180BF22F0902000E614F1 /* BOJ */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		1715EAAD23336FA200B49EF2 /* BruteForce */ = {
+			isa = PBXGroup;
+			children = (
+				1715EAAE23336FE500B49EF2 /* 1065.cpp */,
+			);
+			path = BruteForce;
 			sourceTree = "<group>";
 		};
 		17C1361D23040DC400CD90A0 /* Math */ = {
@@ -276,7 +286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17F223C923330DD1004A335B /* 1260.cpp in Sources */,
+				1715EAAF23336FE500B49EF2 /* 1065.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
