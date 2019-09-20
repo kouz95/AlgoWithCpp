@@ -56,17 +56,7 @@ int main(){
         edges[from].push_back(to);
         edges[to].push_back(from);
     }
-    /*
-     vertex
-     0  1   2   3   4
-     0
-     1  2   3   4
-     2  1   4
-     3  1   4
-     4  1   2   3
-     */
-    
-    
+
     bool visit[vertex+1];
     for(int j = 1; j <= vertex; j++)
         sort(edges[j].begin(), edges[j].end());
