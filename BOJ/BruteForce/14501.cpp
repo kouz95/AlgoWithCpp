@@ -11,7 +11,7 @@
 #include <cstring>
 using namespace std;
 
-void getMaxProfit(int * arr,vector <pair <int, int> > profit, int n){
+void getMaxProfit(int * arr, vector <pair <int, int> > profit, int n){
     for(int i = n-1 ; i >=0 ; i--){
         int nextIdx = profit[i].first + i;
         if(nextIdx > n)
