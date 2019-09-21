@@ -43,6 +43,7 @@ int main(){
                 num2 = j;
                 goto EXIT;
             }
+
     
 EXIT:
     PrintRes(height,num1,num2);
