@@ -18,7 +18,6 @@ int map[MAX+2][MAX+2];
 int tmpMap[MAX+2][MAX+2];
 
 typedef struct pos{
-    int val;
     int x;
     int y;
 }Pos;
@@ -30,6 +29,7 @@ int dy[4] = {0, -1, 0, 1};
 
 vector<pair <int, int> > virusPos;
 vector<pair <int, int> > tmpVirusPos;
+
 int maxSize = 0;
 
 void resetMap(){
@@ -106,13 +106,6 @@ void setThreeWalls(int height, int width){
             }
         }
     }
-//    wall1.x = 5;
-//    wall1.y = 1;
-//    wall2.x = 4;
-//    wall2.y = 2;
-//    wall3.x = 4;
-//    wall3.y = 4;
-//    getSafeAreaSize(height, width);
 }
 
 int main(){
@@ -128,9 +121,6 @@ int main(){
         }
     copyMap();
     tmpVirusPos.assign(virusPos.begin(), virusPos.end());
-    wall1.val = 1;
-    wall2.val = 1;
-    wall3.val = 1;
     setThreeWalls(height, width);
     cout << maxSize << endl;
 }
