@@ -13,6 +13,7 @@
 
 using namespace std;
 #define MAX 8
+int cnt = 0;
 
 int map[MAX+2][MAX+2];
 int tmpMap[MAX+2][MAX+2];
@@ -123,5 +124,6 @@ int main(){
     tmpVirusPos.assign(virusPos.begin(), virusPos.end());
     setThreeWalls(height, width);
     cout << maxSize << endl;
+    cout << cnt << endl;
 }
 
