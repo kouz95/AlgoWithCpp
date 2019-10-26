@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		17FC48CA234C7B1000307F10 /* 11052.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17FC48C9234C7B1000307F10 /* 11052.cpp */; };
+		17B2E11F234DC27C002C1E74 /* tmp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 171519A523486442002AE6BF /* tmp.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -280,7 +280,7 @@
 		171180B722F0902000E614F1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1030;
+				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = kouz;
 				TargetAttributes = {
 					171180BE22F0902000E614F1 = {
@@ -294,6 +294,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 171180B622F0902000E614F1;
 			productRefGroup = 171180C022F0902000E614F1 /* Products */;
@@ -310,7 +311,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17FC48CA234C7B1000307F10 /* 11052.cpp in Sources */,
+				17B2E11F234DC27C002C1E74 /* tmp.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,6 +432,7 @@
 		171180C722F0902000E614F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -439,6 +441,7 @@
 		171180C822F0902000E614F1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
