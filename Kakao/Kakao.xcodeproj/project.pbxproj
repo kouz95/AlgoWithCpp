@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		17F3FE14236678A1006EA726 /* 2020-1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17F3FE13236678A1006EA726 /* 2020-1.cpp */; };
+		173F0B7B2366E386007E4F04 /* 2020-2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 173F0B7A2366E386007E4F04 /* 2020-2.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,6 +23,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		173F0B7A2366E386007E4F04 /* 2020-2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "2020-2.cpp"; sourceTree = "<group>"; };
 		17E3B8232364728200E41EEB /* Kakao */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Kakao; sourceTree = BUILT_PRODUCTS_DIR; };
 		17E3B8262364728200E41EEB /* 2017-1.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "2017-1.cpp"; sourceTree = "<group>"; };
 		17F3FE13236678A1006EA726 /* 2020-1.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "2020-1.cpp"; sourceTree = "<group>"; };
@@ -60,6 +61,7 @@
 			children = (
 				17E3B8262364728200E41EEB /* 2017-1.cpp */,
 				17F3FE13236678A1006EA726 /* 2020-1.cpp */,
+				173F0B7A2366E386007E4F04 /* 2020-2.cpp */,
 			);
 			path = Kakao;
 			sourceTree = "<group>";
@@ -121,7 +123,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17F3FE14236678A1006EA726 /* 2020-1.cpp in Sources */,
+				173F0B7B2366E386007E4F04 /* 2020-2.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
