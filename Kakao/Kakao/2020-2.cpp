@@ -3,87 +3,83 @@
 
 using namespace std;
 
-string res = "";
-
-string reverseStr(string s){
-    string res = "";
+string cutAndReverse(string s){
     for(int i = 1 ; i < s.length()-1 ; i++){
         if(s[i] == '(')
-            res+= ')';
+            s[i] = ')';
         if(s[i] == ')')
-        res+= '(';
+            s[i] = '(';
     }
-    return res;
-    
+    return s.substr(1,s.length()-2);
 }
 
 bool isNiceStr(string s){
-    bool res = true;
-    for(int i = 0; i < s.length(); i++){
-        if(s[i] == ')'){
-            s[i-1] = 'C', s[i] = 'C';
-            i = -1;
+    bool isNice = false;
+    string tmp;
+    for(int i = 0 ; i < s.length(); i++){
+        if(s.length() == 0){
+            isNice = true;
+            break;
+        }
+        if(i == 0 && s[i] == ')')
+            return isNice;
+        if(i == s.length()-1)
+            break;
+        if(s[i] == '(' && s[i+1] == ')'){
+            s = s.substr(0,i) + s.substr(i+2);
+            i-=1;
             continue;
         }
-        if(s[i] != 'C'){
-            res = false;
+    }
+    return isNice;
+}
+
+int separateStr(string s){
+    int sepIdx = 0;
+    int leftCnt = 0;
+    int rightCnt = 0;
+    for(int i = 0 ; i < s.length(); i++){
+        if(s[i] == '('){
+            leftCnt++;
+        }
+        if(s[i] == ')'){
+            rightCnt++;
+        }
+        if(leftCnt != 0 && rightCnt != 0 && leftCnt == rightCnt){
+            sepIdx = i;
             break;
         }
     }
-    return res;
-}
-
-bool isValid(string u, string v){
-    bool res = false;
-
-    int cnt1 = 0;
-    int cnt2 = 0;
-    int cnt3 = 0;
-    int cnt4 = 0;
-    for(int i = 0 ; i < u.length(); i++){
-        if(u[i] == '(')
-            cnt1++;
-        if(u[i] == ')')
-            cnt2++;
-        if(v[i] == '(')
-            cnt3++;
-        if(v[i] == ')')
-            cnt4++;
-    }
-    if(cnt1 == cnt2 && cnt3 == cnt4)
-        res = true;
-    return res;
-}
-
-string sliceStr(string p){
-    string u ="";
-    string v ="";
-    string tmp = "";
-    for(int i = 1 ; i <= p.length(); i++){
-        u = p.substr(0,i);
-        if(i == p.length())
-            v = "";
-        else
-            v = p.substr(i);
-        if(!isValid(u,v)){
-            u = "";
-            v = "";
-            continue;
-        }
-        if(isNiceStr(u)){
-            sliceStr(v);
-            res += u + v;
-            return res;
-        }
-        tmp += '(' + sliceStr(v) + ')' + reverseStr(u);
-        return tmp;
-    }
+    return sepIdx;
 }
 
 string solution(string p) {
     string answer = "";
-    if(answer.length() == 0)
-        return "";
-    answer = sliceStr(p);
+    int loopCnt = 0;
+    bool goLoop = false;
+    if(p.length() == 0)
+        return answer;
+    int sepIdx = separateStr(p);
+    string u = p.substr(0,sepIdx+1);
+    string v;
+    if(sepIdx + 1 >= p.length())
+        v = "";
+    else
+        string v = p.substr(sepIdx+1);
+    if(goLoop)
+        return u;
+    if(isNiceStr(u) && loopCnt == 0){
+        goLoop = true;
+        u += solution(v);
+        goLoop = false;
+        loopCnt++;
+    }
+    else{
+        answer = '(' + solution(v) + ')' + cutAndReverse(u);
+    }
+        
     return answer;
 }
+//(()())()
+
+// u (()()), v()
