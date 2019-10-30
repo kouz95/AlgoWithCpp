@@ -8,10 +8,13 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
 int main(){
-    int a, b = 0;
-    cout << a + b << endl;
+    vector<vector<int>> key;
+    vector<vector<int>> lock;
+
+    
 }
