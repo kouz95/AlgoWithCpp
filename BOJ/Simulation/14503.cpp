@@ -20,135 +20,186 @@ typedef struct {
     int col;
 } Pos;
 
-Pos myRobot;
+Pos myRobotPos;
 int myRobotDir;
 int turnCnt = 0;
 
 int map[MAX_MAP_SIZE][MAX_MAP_SIZE];
-bool isVisit[MAX_MAP_SIZE][MAX_MAP_SIZE];
+bool isClean[MAX_MAP_SIZE][MAX_MAP_SIZE];
 
 int dR[4] = { 1, 0, -1, 0 };
 int dC[4] = { 0, 1, 0, -1 };
 
-
-int getSize(){
-    int size = 0;
-    for( int i = 0 ; i < height ; i++ ) {
-        for ( int j = 0 ; j < width ; j++ ) {
-            if(isVisit[i][j])
-                size++;
-        }
+Pos getNextPos() {
+    Pos nextPos;
+    switch (myRobotDir) {
+        case 0:
+            nextPos.row = myRobotPos.row + dR[3];
+            nextPos.col = myRobotPos.col + dC[3];
+            break;
+            
+        case 1:
+            nextPos.row = myRobotPos.row + dR[0];
+            nextPos.col = myRobotPos.col + dC[0];
+            break;
+            
+        case 2:
+            nextPos.row = myRobotPos.row + dR[1];
+            nextPos.col = myRobotPos.col + dC[1];
+            break;
+            
+        case 3:
+            nextPos.row = myRobotPos.row + dR[2];
+            nextPos.col = myRobotPos.col + dC[2];
+            break;
+            
+        default:
+            break;
     }
-    return size;
+    return nextPos;
 }
 
-Pos getNextPos(Pos currPos) {
+bool isCleaned(Pos robotPos) {
+    bool res = isClean[robotPos.row][robotPos.col];
+    return res;
+}
+
+bool backIsWall(){
+    bool res = false;
+    
     Pos nextPos;
     
     switch (myRobotDir) {
         case 0:
-            nextPos.row = currPos.row + dR[3];
-            nextPos.col = currPos.col + dC[3];
+            nextPos.row = myRobotPos.row + dR[2];
+            nextPos.col = myRobotPos.col + dC[2];
             break;
+            
         case 1:
-            nextPos.row = currPos.row + dR[0];
-            nextPos.col = currPos.col + dC[0];
+            nextPos.row = myRobotPos.row + dR[3];
+            nextPos.col = myRobotPos.col + dC[3];
             break;
+            
         case 2:
-            nextPos.row = currPos.row + dR[1];
-            nextPos.col = currPos.col + dC[1];
+            nextPos.row = myRobotPos.row + dR[0];
+            nextPos.col = myRobotPos.col + dC[0];
             break;
+            
         case 3:
-            nextPos.row = currPos.row + dR[2];
-            nextPos.col = currPos.col + dC[2];
+            nextPos.row = myRobotPos.row + dR[1];
+            nextPos.col = myRobotPos.col + dC[1];
             break;
             
         default:
             break;
     }
     
-    return nextPos;
+    if(map[nextPos.row][nextPos.col] == 1)
+        res = true;
+    
+    return res;
 }
 
-Pos goBack(){
+bool noWays() {
+    bool res = true;
+    Pos nextPos;
+    for(int i = 0 ; i < 4 ; i++){
+        nextPos.row = myRobotPos.row + dR[i];
+        nextPos.col = myRobotPos.col + dC[i];
+        if(isCleaned(nextPos) || map[nextPos.row][nextPos.col] == 1)
+            continue;
+        res = false;
+    }
+    
+    return res;
+}
+
+void turnLeft(){
+    if(myRobotDir == 0)
+        myRobotDir = 3;
+    else myRobotDir -= 1;
+}
+void cleaningHere() {
+    isClean[myRobotPos.row][myRobotPos.col] = true;
+}
+
+void goBack(){
     Pos nextPos;
     
     switch (myRobotDir) {
         case 0:
-            nextPos.row = myRobot.row + dR[2];
-            nextPos.col = myRobot.col + dC[2];
+            nextPos.row = myRobotPos.row + dR[2];
+            nextPos.col = myRobotPos.col + dC[2];
             break;
+            
         case 1:
-            nextPos.row = myRobot.row + dR[3];
-            nextPos.col = myRobot.col + dC[3];
+            nextPos.row = myRobotPos.row + dR[3];
+            nextPos.col = myRobotPos.col + dC[3];
             break;
+            
         case 2:
-            nextPos.row = myRobot.row + dR[0];
-            nextPos.col = myRobot.col + dC[0];
+            nextPos.row = myRobotPos.row + dR[0];
+            nextPos.col = myRobotPos.col + dC[0];
             break;
+            
         case 3:
-            nextPos.row = myRobot.row + dR[1];
-            nextPos.col = myRobot.col + dC[1];
+            nextPos.row = myRobotPos.row + dR[1];
+            nextPos.col = myRobotPos.col + dC[1];
             break;
             
         default:
             break;
     }
-    
-    return nextPos;
+    myRobotPos = nextPos;
 }
 
-void simulation() {
-    Pos currPos, nextPos;
-    while(1){
-        currPos.row = myRobot.row;
-        currPos.col = myRobot.col;
-        isVisit[currPos.row][currPos.col] = true;
-        if(turnCnt == 4) {
-            nextPos = goBack();
-            if(map[nextPos.row][nextPos.col] != 1) {
-                myRobot = nextPos;
-                turnCnt = 0;
-                continue;
-            }
-            else break;
-        }
-        
-        nextPos = getNextPos(currPos);
-        if(!isVisit[nextPos.row][nextPos.col] && map[nextPos.row][nextPos.col] != 1) {
-            myRobot = nextPos;
-            if(myRobotDir == 0)
-                myRobotDir = 3;
-            else myRobotDir -= 1;
-            turnCnt = 0;
-            continue;
-        }
-        else {
-            if(myRobotDir == 0)
-                myRobotDir = 3;
-            else myRobotDir -= 1;
-            turnCnt++;
-            continue;
-        }
+void simulation(){
+    cleaningHere();
+    if(noWays() && backIsWall())
+        return;
+    if(!backIsWall() && noWays()){
+        goBack();
+        simulation();
+    }
+    Pos nextPos = getNextPos();
+    if(!isCleaned(nextPos) && map[nextPos.row][nextPos.col] != 1){
+        turnLeft();
+        myRobotPos = nextPos;
+        simulation();
+    }
+    else {
+        turnLeft();
+        simulation();
     }
     
 }
+
 
 void init() {
     cin >> height >> width;
-    cin >> myRobot.row >> myRobot.col >> myRobotDir;
+    cin >> myRobotPos.row >> myRobotPos.col >> myRobotDir;
     
     for(int i = 0 ; i < height ; i++) {
         for(int j = 0 ; j < width ; j++) {
             cin >> map[i][j];
         }
     }
-    memset(isVisit, false, sizeof(isVisit));
+    memset(isClean, false, sizeof(isClean));
+}
+
+int getCleanArea(){
+    int res = 0;
+    for(int i = 0 ; i < height ; i++){
+        for(int j = 0 ; j < width ; j++){
+            isClean[i][j] ? res++ : false;
+        }
+    }
+    return res;
 }
 
 int main() {
     init();
     simulation();
-    cout << getSize() << endl;
+    cout << getCleanArea() << "\n";
 }
 
