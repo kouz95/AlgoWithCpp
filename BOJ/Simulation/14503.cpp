@@ -22,12 +22,11 @@ typedef struct {
 
 Pos myRobotPos;
 int myRobotDir;
-int turnCnt = 0;
 
 int map[MAX_MAP_SIZE][MAX_MAP_SIZE];
 bool isClean[MAX_MAP_SIZE][MAX_MAP_SIZE];
 
-int dR[4] = { 1, 0, -1, 0 };
+int dR[4] = { -1, 0, 1, 0 };
 int dC[4] = { 0, 1, 0, -1 };
 
 Pos getNextPos() {
@@ -60,13 +59,11 @@ Pos getNextPos() {
 }
 
 bool isCleaned(Pos robotPos) {
-    bool res = isClean[robotPos.row][robotPos.col];
-    return res;
+    return isClean[robotPos.row][robotPos.col];;
 }
 
 bool backIsWall(){
-    bool res = false;
-    
+
     Pos nextPos;
     
     switch (myRobotDir) {
@@ -94,10 +91,7 @@ bool backIsWall(){
             break;
     }
     
-    if(map[nextPos.row][nextPos.col] == 1)
-        res = true;
-    
-    return res;
+    return map[nextPos.row][nextPos.col] == 1;
 }
 
 bool noWays() {
@@ -115,9 +109,7 @@ bool noWays() {
 }
 
 void turnLeft(){
-    if(myRobotDir == 0)
-        myRobotDir = 3;
-    else myRobotDir -= 1;
+    myRobotDir = myRobotDir == 0 ? 3 : myRobotDir - 1;
 }
 void cleaningHere() {
     isClean[myRobotPos.row][myRobotPos.col] = true;
@@ -160,18 +152,18 @@ void simulation(){
     if(!backIsWall() && noWays()){
         goBack();
         simulation();
+        return;
     }
     Pos nextPos = getNextPos();
     if(!isCleaned(nextPos) && map[nextPos.row][nextPos.col] != 1){
-        turnLeft();
         myRobotPos = nextPos;
+        turnLeft();
         simulation();
     }
     else {
         turnLeft();
         simulation();
     }
-    
 }
 
 
@@ -191,7 +183,7 @@ int getCleanArea(){
     int res = 0;
     for(int i = 0 ; i < height ; i++){
         for(int j = 0 ; j < width ; j++){
-            isClean[i][j] ? res++ : false;
+            res = isClean[i][j] ? res + 1 : res;
         }
     }
     return res;
