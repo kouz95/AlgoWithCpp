@@ -43,7 +43,9 @@
 		178191B22374F10700091CA7 = {
 			isa = PBXGroup;
 			children = (
-				178191BD2374F10700091CA7 /* WoowaBros */,
+				178191BE2374F10700091CA7 /* 1.cpp */,
+				178191C52374F63C00091CA7 /* 2.cpp */,
+				178191C72374F66B00091CA7 /* 3.cpp */,
 				178191BC2374F10700091CA7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,16 +56,6 @@
 				178191BB2374F10700091CA7 /* WoowaBros */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		178191BD2374F10700091CA7 /* WoowaBros */ = {
-			isa = PBXGroup;
-			children = (
-				178191BE2374F10700091CA7 /* 1.cpp */,
-				178191C52374F63C00091CA7 /* 2.cpp */,
-				178191C72374F66B00091CA7 /* 3.cpp */,
-			);
-			path = WoowaBros;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
