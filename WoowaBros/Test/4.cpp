@@ -59,7 +59,6 @@ bool getAns(vector<string> infos , string action, bool &isLogined, bool &isFoodA
 
 vector<bool> solution(vector<string> infos, vector<string> actions) {
     vector<bool> answer;
-    int userNum = infos.size();
     bool isLogined = false;
     bool isFoodAdded = false;
     for(int i = 0 ; i < actions.size(); i++) {
