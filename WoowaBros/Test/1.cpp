@@ -5,7 +5,8 @@
 using namespace std;
 
 double getDistance(vector<int> p1, vector<int> p2) {
-    int x1, y1, x2, y2, res;
+    double res;
+    int x1, y1, x2, y2
     x1 = p1[0];
     y1 = p1[1];
     x2 = p2[0];
