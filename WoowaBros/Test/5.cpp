@@ -59,7 +59,7 @@ int getSpending(string amount) {
     if(amount.substr(amountStrLen - 1) == "5")
         sheEatFirst();
     
-    int eatingTimes = amount[0] - '0'; // 10인분 이상?
+    int eatingTimes = amount[0] - '0';
     for(int i = 0 ; i < eatingTimes ; i++){
         heEat();
     }
@@ -72,9 +72,11 @@ int getSpending(string amount) {
 
 bool isValid(string amount) {
     bool res = true;
-    if(amount == "0.0")
+    if(amount == "0.0" || amount == "0.5")
         return false;
     if(amount.length() > 3)
+        return false;
+    if(amount[0] - '0' >= 3)
         return false;
     return res;
 }
